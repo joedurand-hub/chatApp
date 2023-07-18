@@ -1,0 +1,10 @@
+.messages {
+    margin: 0;
+}
+
+.date {
+    font-size: 10px;
+    font-weight: 100;
+    color: rgb(202, 202, 202);
+    margin: 0;
+}

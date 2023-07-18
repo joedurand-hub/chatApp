@@ -11,6 +11,7 @@
     "generate-pwa-assets": "pwa-assets-generator --preset minimal public/vite.svg"
   },
   "dependencies": {
+    "@chatscope/chat-ui-kit-react": "^1.10.1",
     "@chatscope/use-chat": "^3.1.1",
     "@vitejs/plugin-react-swc": "^3.3.2",
     "pwa-asset-generator": "^6.3.1",
