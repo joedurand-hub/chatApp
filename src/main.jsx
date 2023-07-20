@@ -20,7 +20,7 @@ const router = createBrowserRouter(
     <>
     <Route index element={<Home />} />
     <Route path="chat" element={<ChatGeneral />} />
-    <Route path="chat/:id" element={<ChatPrivado />} />
+    <Route path="chat-privado" element={<ChatPrivado />} />
     <Route path="conversaciones" element={<Conversaciones />} />
     <Route path="admin" element={<Admin />} />
     <Route path="perfil/:id" element={<Perfil />} />

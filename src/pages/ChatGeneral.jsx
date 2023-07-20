@@ -9,24 +9,7 @@ import Conversation from "../components/Conversation/Index"
 
 const ChatGeneral = () => {
   return (
-    <Container>
-      
-      <Sidebar>
-        <ConversationList>
-          <Conversation/>
-          <Conversation/>
-          <Conversation/>
-          <Conversation/>
-          </ConversationList>
-      </Sidebar>
-      <Chat>
-
-        <ChatHeader />
-        <MessageList />
-        <SendMessage />
-
-      </Chat>
-    </Container>
+      <Chat/>
   )
 }
 
