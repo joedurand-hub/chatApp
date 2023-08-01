@@ -6,23 +6,28 @@ import { API_BASE_URL, API_LOGIN } from "../api/index"
 import useHttp from "../hooks/useHttp"
 
 function Home() {
+  useEffect(() => {
+    initTE({ Input })
+  }, [])
   const { loading, data, error, sendRequest } = useHttp()
   const [inputValue, setInputValue] = useState({
     email: '',
     password: ''
   })
   const { state, dispatch } = useContext(ChatDataContext)
-
-  useEffect(() => {
-    initTE({ Input })
-  }, [])
+  console.log(state)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
       await sendRequest(`${API_BASE_URL}${API_LOGIN}`, 'POST', inputValue)
-      await actionLogin(dispatch)(loading, data, error);
       setInputValue({ email: '', password: '' })
-  };
+    };
+    useEffect( () => {
+      async function fetchData() {
+          await actionLogin(dispatch)(loading, data, error); // cargo el state de arriba
+      }
+      fetchData()
+  }, [data])
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
