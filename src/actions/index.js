@@ -1,7 +1,6 @@
 import { LOGIN } from './constants';
 
 export const actionLogin = (dispatch) => async (loading, data, error) => {
-  console.log(loading, data, error)
   try {
     return dispatch({ type: LOGIN, payload: {loading, data, error} })
   }

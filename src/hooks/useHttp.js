@@ -18,12 +18,10 @@ const useHttp = () => {
         },
       });
       const responseData = await response.json();
-      if (!response.ok) {
-        throw new Error(responseData.message || 'Something went wrong!');
-      }
+      console.log("responseData:", responseData)
       setData(responseData);
-    } catch (err) {
-      setError(err.message || 'Something went wrong!');
+    } catch (error) {
+      setError(error || 'Something went wrong!');
     }
     setLoading(false);
   }, []);

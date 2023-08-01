@@ -11,7 +11,6 @@ function Home() {
     email: '',
     password: ''
   })
-  console.log(inputValue)
   const { state, dispatch } = useContext(ChatDataContext)
 
   useEffect(() => {
@@ -20,18 +19,11 @@ function Home() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    try {
       await sendRequest(`${API_BASE_URL}${API_LOGIN}`, 'POST', inputValue)
       await actionLogin(dispatch)(loading, data, error);
-      setInputValue({
-        email: '',
-        password: ''
-      })
-    } catch (error) {
-      console.error('Error en el inicio de sesión: ', error);
-    }
+      setInputValue({ email: '', password: '' })
   };
-  
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setInputValue((prevFormData) => ({
@@ -83,7 +75,7 @@ function Home() {
 
               <div class="relative mb-3" data-te-input-wrapper-init>
                 <input
-                name="password"
+                  name="password"
                   onChange={handleInputChange}
                   value={inputValue.password}
                   type="password"
