@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import ChatDataContextProvider from './context/index';
 import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router-dom';
 import Home from './pages/Home.jsx'
 import Admin from "./pages/Admin/Index.jsx"
@@ -24,10 +25,13 @@ const router = createBrowserRouter(
     <Route path="conversaciones" element={<Conversaciones />} />
     <Route path="admin" element={<Admin />} />
     <Route path="perfil/:id" element={<Perfil />} />
+    {/* <Route path="recuperar-contraseña" element={<Perfil />} /> */}
     </>
   )
 )
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router} />
+  <ChatDataContextProvider>
+    <RouterProvider router={router} />
+  </ChatDataContextProvider>
 )
