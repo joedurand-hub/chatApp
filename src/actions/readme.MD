@@ -1,5 +1,10 @@
-Acá puedo poner las actions de la siguiente forma.
+Poner las actions de la siguiente forma.
 Auth --> Login, logOut, Registro
-Búsqueda --> actions de Filtros
-Etc
-Dentro de cada feature, sus CRUD completo de actions
+Búsqueda --> actions de Filtros --> En estos casos debe poseer un try-catch, en los métodos HTTP lo maneja el hook
+Dentro de cada feature, sus CRUD completo de actions + extras:
+- GET (USER LOGGED OR ADMIN)
+- GET BY ID
+- GET ALL
+- POST
+- PUT
+- DELETE

@@ -15,18 +15,17 @@ function Home() {
     password: ''
   })
   const { state, dispatch } = useContext(ChatDataContext)
-  console.log(state)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-      await sendRequest(`${API_BASE_URL}${API_LOGIN}`, 'POST', inputValue)
-      setInputValue({ email: '', password: '' })
-    };
-    useEffect( () => {
-      async function fetchData() {
-          await actionLogin(dispatch)(loading, data, error); // cargo el state de arriba
-      }
-      fetchData()
+    await sendRequest(`${API_BASE_URL}${API_LOGIN}`, 'POST', inputValue)
+    setInputValue({ email: '', password: '' })
+  };
+  useEffect(() => {
+    async function fetchData() {
+      await actionLogin(dispatch)(loading, data, error); // cargo el state de arriba
+    }
+    fetchData()
   }, [data])
 
   const handleInputChange = (e) => {
@@ -39,7 +38,7 @@ function Home() {
 
   return (
     <section class="h-screen">
-      <div class="h-full">
+      <div class="mb-10 h-full">
         <div
           class="mt-1 flex w-full items-center justify-center lg:justify-between">
           <a href="conversaciones" class="mr-5 ">Conversaciones</a>
@@ -97,13 +96,20 @@ function Home() {
 
               <div class="text-center lg:text-left">
                 <a href="#" class="mr-5 ">¿Olvidaste la contraseña?</a>
-                <button
+                {loading ? (
+                  <div>
+                    Cargando..
+                  </div>
+                ) : (
+                  
+                  <button
                   type="submit"
                   class="inline-block rounded bg-primary px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
                   data-te-ripple-init
                   data-te-ripple-color="light">
                   Ingresar
                 </button>
+                    )}
 
               </div>
             </form>
