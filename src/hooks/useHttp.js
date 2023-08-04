@@ -1,6 +1,13 @@
-import { useState, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 const useHttp = () => {
+  const [token, setToken] = useState("")
+  
+  useEffect(() => {
+    const authtoken = localStorage.getItem('authtoken');
+    setToken(authtoken)
+  }, [])
+
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
@@ -15,6 +22,7 @@ const useHttp = () => {
         body: JSON.stringify(body),
         headers: {
           'Content-Type': 'application/json',
+          'authtoken': token
         },
       });
       const responseData = await response.json();

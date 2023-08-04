@@ -24,6 +24,7 @@ function Home() {
   useEffect(() => {
     async function fetchData() {
       await actionLogin(dispatch)(loading, data, error); // cargo el state de arriba
+      localStorage.setItem('authtoken', JSON.stringify(data));
     }
     fetchData()
   }, [data])

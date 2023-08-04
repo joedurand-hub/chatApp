@@ -2,12 +2,22 @@ import { useEffect, useState } from 'react'
 import { Sidenav, initTE } from "tw-elements";
 import Register from "../../components/Register/Index"
 import Profile from "../../components/Profile/Index"
-import { BASE_URL, LOGIN } from '../../helpers/constants';
+import { BASE_URL } from '../../helpers/constants';
 
 const Index = () => {
   useEffect(() => {
     initTE({ Sidenav })
-  }, [])
+    const authtoken = localStorage.getItem('authtoken');
+    const token = JSON.parse(authtoken);
+    if(!token || token === undefined) return window.location.href = "/"
+    if (token && token.role === "user") {
+      // Redireccionar a la página de inicio
+      window.location.href = "/chat";
+      return
+    }
+    if(token && token.role === "admin") return true
+    }, [])
+
   const [isActive, setIsActive] = useState('register')
   return (
     <div>
