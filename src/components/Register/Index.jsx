@@ -15,9 +15,6 @@ const Index = () => {
         email: '',
         password: ''
     })
-    console.log(loading)
-    console.log(data)
-    console.log(error)
     const { state, dispatch } = useContext(ChatDataContext)
 
     const handleSubmit = async (e) => {

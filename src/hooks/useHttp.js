@@ -1,18 +1,11 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 
 const useHttp = () => {
-  const [token, setToken] = useState("")
-  
-  useEffect(() => {
-    const authtoken = localStorage.getItem('authtoken');
-    setToken(authtoken)
-  }, [])
-
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
 
-  const sendRequest = useCallback(async (url, method, body) => {
+  const sendRequest = useCallback(async (url, method, body, token) => {
     setLoading(true);
     setError(null);
     setData(null);

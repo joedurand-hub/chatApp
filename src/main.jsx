@@ -17,22 +17,6 @@ if ("serviceWorker" in navigator) {
 }
 
 const MainApp = () => {
-  // useEffect(() => {
-  //   const authtoken = localStorage.getItem('authtoken');
-  //   const token = JSON.parse(authtoken);
-  //   if(!token || token === undefined) return window.location.href = "/"
-  //   if (token && token.role === "user") {
-  //     // Redireccionar a la página de inicio
-  //     window.location.href = "/chat";
-  //     return
-  //   }
-  //   if (token && token.role === "admin") {
-  //     // Redireccionar a la página de inicio
-  //     window.location.href = "/admin";
-  //     return
-  //   }
-  // }, []);
-
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
