@@ -3,6 +3,14 @@ import React from 'react'
 const ChatPrivado = () => {
   return (
     <section class="flex-col max-w-full p-absolute">
+        <svg 
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        height="1.5em"
+        width="1.5em"
+      >
+        <path d="M21 11H6.414l5.293-5.293-1.414-1.414L2.586 12l7.707 7.707 1.414-1.414L6.414 13H21z" />
+      </svg>
     <div class="lg:col-span-2 lg:block">
       <div class="w-full">
         <div class="relative flex items-center p-3 border-b border-gray-300">

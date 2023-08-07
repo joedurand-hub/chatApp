@@ -10,6 +10,7 @@ import ChatPrivado from "./pages/ChatPrivado.jsx";
 import Perfil from "./pages/Perfil.jsx";
 import { registerSW } from "virtual:pwa-register";
 import "./styles.css";
+import Users from './pages/Admin/Users';
 
 if ("serviceWorker" in navigator) {
   // && !/localhost/.test(window.location)) {
@@ -25,6 +26,7 @@ const MainApp = () => {
         <Route path="chat-privado" element={<ChatPrivado />} />
         <Route path="conversaciones" element={<Conversaciones />} />
         <Route path="admin" element={<Admin />} />
+        <Route path="admin/users" element={<Users />} />
         <Route path="perfil/:id" element={<Perfil />} />
         {/* <Route path="recuperar-contraseña" element={<Perfil />} /> */}
       </>

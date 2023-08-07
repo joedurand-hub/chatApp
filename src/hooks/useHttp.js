@@ -9,15 +9,20 @@ const useHttp = () => {
     setLoading(true);
     setError(null);
     setData(null);
+    const requestOptions = {
+      url,
+      method,
+      headers: {
+        'Content-Type': 'application/json',
+        'authtoken': token
+      },
+      token
+    }
+    if (body !== null) {
+      requestOptions.body = JSON.stringify(body);
+    }
     try {
-      const response = await fetch(url, {
-        method,
-        body: JSON.stringify(body),
-        headers: {
-          'Content-Type': 'application/json',
-          'authtoken': token
-        },
-      });
+      const response = await fetch(url, requestOptions);
       const responseData = await response.json();
       setData(responseData);
     } catch (error) {

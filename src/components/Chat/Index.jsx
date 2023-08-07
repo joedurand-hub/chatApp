@@ -6,10 +6,21 @@ const Index = () => {
       <div class="lg:col-span-2 lg:block">
         <div class="w-full">
           <div class="relative flex items-center p-3 border-b border-gray-300">
+      <a href="/conversaciones">
+      <svg  
+      style={{marginRight: "20px"}}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      height="1.5em"
+      width="1.5em"
+      >
+        <path d="M21 11H6.414l5.293-5.293-1.414-1.414L2.586 12l7.707 7.707 1.414-1.414L6.414 13H21z" />
+      </svg>
+        </a>
             <img class="object-cover w-10 h-10 rounded-full"
               src="https://cdn.pixabay.com/photo/2018/01/15/07/51/woman-3083383__340.jpg" alt="username" />
             <span class="block ml-2 font-bold text-gray-600">Emma</span>
-            <span class="absolute w-3 h-3 bg-green-600 rounded-full left-10 bottom-3"></span>
+            <span class="ml-10 absolute w-3 h-3 bg-green-600 rounded-full left-10 bottom-3"></span>
           </div>
           <div class="relative w-full p-6 overflow-y-auto lg:h-[40rem]">
             <ul class="space-y-2">

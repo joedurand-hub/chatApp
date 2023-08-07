@@ -10,9 +10,6 @@ function Home() {
     initTE({ Input })
   }, [])
   const { loading, data, error, sendRequest } = useHttp()
-  console.log(loading)
-  console.log(data)
-  console.log(error)
   const [inputValue, setInputValue] = useState({
     email: '',
     password: ''
@@ -35,16 +32,14 @@ function Home() {
       fetchData()
     }
   }, [data])
+  
+  if (state.user.data?.role === "admin") {
+    window.location.href = "/admin"
+  }
 
-  if (state.user.data?.token) {
+  if (state.user.data?.role === "user") {
     window.location.href = "/chat"
   }
-  useEffect(() => {
-    const authtoken = localStorage.getItem('authtoken');
-    if (!authtoken) return
-    if (authtoken.token !== "" && authtoken.token !== "Email or password is wrong") return window.location.href = "/chat"
-  }, [])
-
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
