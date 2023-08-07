@@ -41,7 +41,7 @@ const Index = () => {
     return (
         <section class="bg-gray-50 dark:bg-gray-900">
             <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-                <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+                <a href="#" class="flex items-center justify-center mb-5">
                 <img
               src="LOGO-SNIPER.png"
               class="mb-5 md:mb-0 md:w-8/12 lg:w-5/12 xl:w-5/12"
@@ -109,7 +109,7 @@ const Index = () => {
                               Registro exitoso!
                             </div>
                           )}
-                          {error || data?.message !== "Success" && (
+                          {error && (
                             <div
                               class="mb-3 inline-flex w-full items-center rounded-lg bg-danger-100 px-6 py-5 text-base text-danger-700"
                               role="alert">

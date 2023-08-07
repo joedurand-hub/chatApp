@@ -53,9 +53,9 @@ function Home() {
     <section class="h-screen">
       <div class="mb-10 h-full">
         <div
-          class="g-6 flex h-full flex-wrap items-center flex-col justify-center lg:justify-between">
+          class="g-6 flex h-full flex-wrap items-center flex-col justify-center">
           <div
-            class=" flex items-center justify-center shrink-1 mb-12 grow-0 basis-auto md:mb-0 md:w-9/12 md:shrink-0 lg:w-6/12 xl:w-6/12">
+            class=" flex items-center justify-center shrink-1 mb-6 grow-0 basis-auto md:mb-0 md:w-9/12 md:shrink-0 lg:w-6/12 xl:w-6/12">
             <img
               src="LOGO-SNIPER.png"
               class="mb-5 md:mb-0 md:w-8/12 lg:w-5/12 xl:w-5/12"
