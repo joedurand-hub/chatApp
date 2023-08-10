@@ -10,14 +10,7 @@ const Index = ({ children }) => {
   return (
     <aside class="flex-col h-full max-h-screen w-full m-0">
   <div style={{display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-around", borderBottom: "1px solid #e6e6e6"}}>
-  {/* <svg 
-        viewBox="0 0 24 24"
-        fill="currentColor"
-        height="1.5em"
-        width="1.5em"
-      >
-        <path d="M21 11H6.414l5.293-5.293-1.414-1.414L2.586 12l7.707 7.707 1.414-1.414L6.414 13H21z" />
-      </svg> */}
+
       <h1 style={{ fontWeight: "bold", paddingTop: "5px" }} class="my-2 mb-4 ml-2 text-lg text-gray-600">Conversaciones</h1>
       <button style={{ position: "relative", right: "10px" }}
         class="rounded bg-primary px-4 py-2 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg"
