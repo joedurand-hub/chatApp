@@ -18,7 +18,7 @@ const Conversaciones = () => {
   useEffect(() => {
 
     // Conecta con el servidor de socket.io
-    socket.current = io('http://localhost:8080');
+    // socket.current = io('http://localhost:8080');
 
     // // Maneja los eventos del socket
     // socket.current.on('conectado', (conexion) => {

@@ -1,6 +1,7 @@
 import React from 'react'
+import {BASE_URL} from "../../helpers/constants"
 
-const MenuAdmin = ({ BASE_URL }) => {
+const MenuAdmin = () => {
     return (
         <>
             <nav

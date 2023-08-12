@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { API_BASE_URL, API_GET_USERS } from '../../api'
 import useHttp from '../../hooks/useHttp'
+import CreateMessage from "../../components/CreateMessage/CreateMessage"
 import DeleteUser from "../../components/DeleteUser/Index"
 
 const Index = () => {    
@@ -76,6 +77,7 @@ const Index = () => {
                         class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
                         Añadido: {obj.createdAt}
                     </h6>
+                    <CreateMessage/>
                     <DeleteUser id={obj._id} token={token}/>
                 </div>
                 )
