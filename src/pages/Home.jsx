@@ -38,7 +38,7 @@ function Home() {
   }
 
   if (state.user.data?.role === "user") {
-    window.location.href = "/chat"
+    window.location.href = "/chat-general"
   }
 
   const handleInputChange = (e) => {

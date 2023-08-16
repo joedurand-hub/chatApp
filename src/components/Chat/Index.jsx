@@ -2,45 +2,78 @@ import { useEffect, useState } from 'react'
 import { io } from 'socket.io-client'
 import File from "../../components/File/Index"
 import ChatHeader from "../../components/ChatHeader/Index"
+import { API_BASE_URL, API_CREATE_OR_ADD_MESSAGE_TO_CHAT_GENERAL, API_GET_CHAT_GENERAL } from '../../api'
+import useHttp from "../../hooks/useHttp"
 
 const Index = () => {
   const [user, setUser] = useState("user")
   const [historialDelChat, setHistorialDelChat] = useState([])
   const [message, setMessage] = useState("")
-  // const [typing, setTyping] = useState(false)
   const [socket, setSocket] = useState(null)
+  const { loading, data, error, sendRequest } = useHttp()
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    sendRequest(`${API_BASE_URL}${API_CREATE_OR_ADD_MESSAGE_TO_CHAT_GENERAL}`, 'POST', { messages: message }, user.token)
     socket.emit("enviar-mensaje", message)
-    setHistorialDelChat((previousState) => [...previousState, { messages: message, reciboMensaje: false }])
+    setHistorialDelChat((previousState) => {
+      const updatedEntries = previousState.map(entry => {
+        if (entry === previousState[previousState.length - 1]) {
+          return {
+            ...entry,
+            messages: [...entry.messages, message], reciboMensaje: false
+          };
+        }
+        return entry;
+      });
+      return updatedEntries;
+    });
+
     setMessage("")
-    // setTyping(false)
+
   }
   const handleInputChage = (e) => {
     setMessage(e.target.value)
-    // socket.emit("escribiendo")
   }
 
   useEffect(() => {
-    setSocket(io("http://localhost:8080"))
-    const data = JSON.parse(window.localStorage.getItem("authtoken"))
-    setUser(data)
+    setSocket(io(`${API_BASE_URL}`))
+    const user = JSON.parse(window.localStorage.getItem("authtoken"))
+    async function getChatGeneral() {
+      await sendRequest(`${API_BASE_URL}${API_GET_CHAT_GENERAL}`, 'GET', null, null)
+    }
+    getChatGeneral()
+    setUser(user)
   }, [])
+
+  useEffect(() => {
+    if (data && data.messages) setHistorialDelChat([{
+      messages: data.messages,
+      reciboMensaje: user.role === "admin" ? false : true
+    }])
+  }, [data])
 
   useEffect(() => {
     if (!socket) return
     socket.on('mensaje-desde-server', (data) => {
-      setHistorialDelChat((previousState) => [...previousState, { messages: data, reciboMensaje: true }])
+      console.log('mensaje-desde-server', data)
+      setHistorialDelChat((previousState) => {
+        const updatedEntries = previousState.map(entry => {
+          if (entry === previousState[previousState.length - 1]) {
+            return {
+              ...entry,
+              messages: [...entry.messages, data], reciboMensaje: true
+            };
+          }
+          return entry;
+        });
+        return updatedEntries;
+      });
+
+
     })
-        // socket.on('escribiendo-desde-server', () => {
-        //   setTyping(true)
-        // })
+
   }, [socket])
-
-
-
-
 
   return (
     <section class="flex-col max-w-full p-absolute">
@@ -51,24 +84,30 @@ const Index = () => {
             <ul class="mt-14 space-y-2">
               {historialDelChat?.map((obj, index) => {
                 return (
-                    <div key={index} style={obj.reciboMensaje ? {
-                      textAlign: "left",
-                    background: "#909090",
-                    color: "white",
-                    fontSize: "16px",
-                    padding: "0.7rem 0.7rem 0.4rem 0.7rem",
-                    borderRadius: "1.5rem 1.5rem 1.5rem 0",
-                    } : {
-                      textAlign: "right",
-                    background: "#636b8a",
-                    color: "white",
-                    fontWeight: 600,
-                    fontSize: "16px",
-                    padding: "0.7rem 0.7rem 0.4rem 0.7rem",
-                    borderRadius: "1.5rem 1.5rem 1.5rem 0",
-                    }}>
-                      <span >{obj.messages}</span>
-                    </div>
+                  <>
+                    {obj.messages.map((msj, index) => {
+                      return (
+                        <div key={index} style={obj.reciboMensaje ? {
+                          textAlign: "left",
+                          marginBottom: "3px",
+                          background: "#909090",
+                          color: "white",
+                          fontSize: "16px",
+                          padding: "0.7rem 0.7rem 0.4rem 0.7rem",
+                          borderRadius: "1.5rem 1.5rem 1.5rem 0",
+                        } : {
+                          textAlign: "right",
+                          marginBottom: "3px",
+                          background: "#636b8a",
+                          color: "white",
+                          fontWeight: 600,
+                          fontSize: "16px",
+                          padding: "0.7rem 0.7rem 0.4rem 0.7rem",
+                          borderRadius: "1.5rem 1.5rem 1.5rem 0",
+                        }}>{msj}</div>
+                      )
+                    })}
+                  </>
                 )
               })}
               <li class="flex justify-start">

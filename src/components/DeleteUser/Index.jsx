@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { API_BASE_URL, DELETE_USER } from '../../api'
+import { API_BASE_URL, API_DELETE_USER } from '../../api'
 import useHttp from '../../hooks/useHttp'
 
 const Index = ({ id, token }) => {
@@ -8,7 +8,7 @@ const Index = ({ id, token }) => {
 
     console.log(data)
     const handleDelete = async () => {
-        await sendRequest(`${API_BASE_URL}${DELETE_USER}${id}`, 'DELETE', null, token)
+        await sendRequest(`${API_BASE_URL}${API_DELETE_USER}${id}`, 'DELETE', null, token)
         setActive(true)
         window.location.reload()
     }

@@ -21,7 +21,7 @@ const MainApp = () => {
     createRoutesFromElements(
       <>
         <Route index element={<Home />} />
-        <Route path="chat" element={<ChatGeneral />} />
+        <Route path="chat-general" element={<ChatGeneral />} />
         <Route path="chat-privado" element={<ChatPrivado />} />
         <Route path="conversaciones" element={<Conversaciones />} />
         <Route path="admin" element={<Admin />} />

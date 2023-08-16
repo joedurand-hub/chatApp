@@ -18,7 +18,8 @@ const useHttp = () => {
       },
       token
     }
-    if (body !== null) {
+    if (body !== null) { 
+      // debe ser pasado como obj --> { key: value }
       requestOptions.body = JSON.stringify(body);
     }
     try {
